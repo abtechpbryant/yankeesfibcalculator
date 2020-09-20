@@ -10,12 +10,12 @@ script:
 after_success:
   - docker build -t pbryant/multi-docker-client ./client
   - docker build -t pbryant/multi-docker-nginx ./nginx
-  - docker build -t pbryant/multi-docker-server ./api
+  - docker build -t pbryant/multi-docker-api ./api
   - docker build -t pbryant/multi-docker-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub creating new repos
   - docker push pbryant/multi-docker-client
   - docker push pbryant/multi-docker-nginx
-  - docker push pbryant/multi-docker-server
+  - docker push pbryant/multi-docker-api
   - docker push pbryant/multi-docker-worker
