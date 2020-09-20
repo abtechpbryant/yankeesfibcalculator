@@ -8,10 +8,10 @@ before_install:
 scripts:
     - docker run -e CI=true pbryant/react-test npm run test -- --coverage
 after_success:
-  - docker build -t pbryant/multi-client ./client
-  - docker build -t pbryant/multi-nginx ./nginx
-  - docker build -t pbryant/multi-server ./api
-  - docker build -t pbryant/multi-worker ./worker
+  - docker build -t pbryant/multi-docker-client ./client
+  - docker build -t pbryant/multi-docker-nginx ./nginx
+  - docker build -t pbryant/multi-docker-server ./api
+  - docker build -t pbryant/multi-docker-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub creating new repos
