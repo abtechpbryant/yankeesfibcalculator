@@ -5,8 +5,8 @@ services:
     - docker
 before_install:
     - docker build -t pbryant/react-test -f ./client/Dockerfile.dev ./client
-scripts:
-    - docker run -e CI=true pbryant/react-test npm run test -- --coverage
+script:
+    - docker run -e CI=true pbryant/react-test npm run test
 after_success:
   - docker build -t pbryant/multi-docker-client ./client
   - docker build -t pbryant/multi-docker-nginx ./nginx
